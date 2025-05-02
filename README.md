@@ -1,4 +1,4 @@
-# Modern Typing Test Application
+# Typing Test Application
 
 A modern and responsive typing test application built to help users practice and improve their typing skills with real-time feedback and detailed statistics.
 
