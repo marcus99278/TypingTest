@@ -1156,7 +1156,7 @@ body,
   .reset-btn,
   .change-btn,
   .info-btn,
-  .pause-play-btn {
+  .pause-play-btn,.theme-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1167,7 +1167,7 @@ body,
   .reset-btn img,
   .change-btn img,
   .info-btn img,
-  .pause-play-btn img {
+  .pause-play-btn img, .theme-btn {
     width: 20px; /* Slightly smaller icons on mobile */
     height: 20px;
     margin: auto;
