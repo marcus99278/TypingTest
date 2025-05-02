@@ -1,0 +1,308 @@
+<!--
+MIT License
+Copyright (c) 2025 Mudasir.Khalid
+See LICENSE file for details
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="x-icon" href="Speedometer.png" />
+    <title>Typing Speed Test</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="background-animation">
+      <div class="floating-element">⌨</div>
+      <div class="floating-element">⏎</div>
+      <div class="floating-element">⇧</div>
+      <div class="floating-element">⌫</div>
+      <div class="floating-element">⎵</div>
+      <div class="floating-element">⇪</div>
+      <div class="floating-element">⌘</div>
+      <div class="floating-element">⏻</div>
+      <div class="floating-element">⇥</div>
+      <div class="floating-element">⌥</div>
+      <div class="floating-element">⌨</div>
+      <div class="floating-element">⏎</div>
+      <div class="floating-element">⇧</div>
+      <div class="floating-element">⌫</div>
+      <div class="floating-element">⎵</div>
+      <div class="floating-element">⇪</div>
+      <div class="floating-element">⌘</div>
+      <div class="floating-element">⏻</div>
+      <div class="floating-element">⇥</div>
+      <div class="floating-element">⌥</div>
+      <div class="floating-element">⌨</div>
+      <div class="floating-element">⏎</div>
+      <div class="floating-element">⇧</div>
+      <div class="floating-element">⌫</div>
+      <div class="floating-element">⎵</div>
+      <div class="floating-element">⌨</div>
+      <div class="floating-element">⏎</div>
+      <div class="floating-element">⇧</div>
+      <div class="floating-element">⌫</div>
+      <div class="floating-element">⎵</div>
+      <div class="floating-element">⇪</div>
+      <div class="floating-element">⌘</div>
+      <div class="floating-element">⏻</div>
+      <div class="floating-element">⇥</div>
+      <div class="floating-element">⌥</div>
+    </div>
+
+    <div class="container">
+      <h1 class="heading-text">
+        Test Your Typing Speed
+        <img
+          src="Speedometer.png"
+          alt=""
+          width="50px"
+          height="50px"
+          style="transform: translateY(10px)"
+        />
+      </h1>
+
+      <div class="stats">
+        <p>Time: <span id="timer">0s</span></p>
+        <p>Speed: <span id="speed">0 WPM</span></p>
+        <p>Errors: <span id="errors">0</span></p>
+      </div>
+
+      <div class="test-area">
+        <div id="quote" class="quote">
+          The quick brown fox jumps over the lazy dog. This pangram contains
+          every letter of the English alphabet at least once. Typing practice is
+          essential for improving your speed and accuracy on the keyboard.
+        </div>
+
+        <div class="input-container">
+          <div class="buttons">
+            <button
+              id="stopTest"
+              class="stop-btn"
+              disabled
+              data-tooltip="Stop Test"
+            >
+              <img src="Stop.png" alt="Stop Test" width="30px" height="30px" />
+            </button>
+            <button
+              id="pausePlayBtn"
+              class="pause-play-btn"
+              data-tooltip="Pause/Resume Test"
+            >
+              <img
+                src="pause.png"
+                alt="Pause/Play"
+                id="pausePlayIcon"
+                width="30px"
+                height="30px"
+              />
+              <button
+                id="changeParagraph"
+                class="change-btn"
+                data-tooltip="Change Paragraph"
+              >
+                <img
+                  src="nextparagraph.png"
+                  alt="Change Paragraph"
+                  width="30px"
+                  height="30px"
+                />
+              </button>
+            </button>
+            <button id="reset" class="reset-btn" data-tooltip="Reset Test">
+              <img
+                src="refresh.png"
+                alt="Reset Test"
+                width="30px"
+                height="30px"
+              />
+            </button>
+
+            <button
+              id="infoButton"
+              class="info-btn"
+              data-tooltip="Test Information"
+            >
+              <img src="info.png" alt="" width="30px" height="30px" />
+            </button>
+
+            <button
+              id="themeToggle"
+              class="theme-btn"
+              data-tooltip="Toggle Theme"
+              class="theme-btn"
+              style="box-shadow: inset 0 2px 4px var(--shadow-color)"
+            >
+              <img
+                src="light.png"
+                alt="Toggle Theme"
+                id="themeIcon"
+                width="30px"
+                height="30px"
+              />
+            </button>
+          </div>
+          <textarea
+            id="input"
+            class="input"
+            placeholder="Start typing here..."
+          ></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="results-container hidden">
+      <div class="results-popup">
+        <button
+          id="closeResults"
+          class="notification-result-close"
+          aria-label="Close Results"
+        >
+          ×
+        </button>
+        <h2>Test Results</h2>
+        <div class="result-stats">
+          <div class="stat-container">
+            <h3>Speed</h3>
+            <div class="speedometer" id="speed-meter">
+              <canvas id="speedCanvas"></canvas>
+              <div
+                class="speed-value"
+                id="final-speed"
+                style="display: none"
+              ></div>
+            </div>
+          </div>
+
+          <div class="stat-container">
+            <h3>Accuracy</h3>
+            <div class="accuracy-bar">
+              <div class="accuracy-fill" id="accuracy-fill"></div>
+            </div>
+            <div class="accuracy-value" id="final-accuracy">0%</div>
+          </div>
+
+          <div class="stat-container">
+            <h3>Time</h3>
+            <div class="time-chart">
+              <div class="time-circle">
+                <span id="final-time">0s</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-container">
+            <h3>Errors</h3>
+            <div class="errors-chart">
+              <div class="error-bar" id="error-bar"></div>
+              <span class="errors-value" id="final-errors">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="results-container hidden">
+      <div class="accuracy-section">
+        <div class="accuracy-bar">
+          <div id="accuracy-fill" class="accuracy-fill"></div>
+        </div>
+        <span id="accuracy-value" class="accuracy-value">0%</span>
+        <span id="accuracy-display" class="accuracy-display">0%</span>
+      </div>
+    </div>
+
+    <div class="notification-container">
+      <div class="notification success hidden" id="successNotification">
+        <button class="notification-close" aria-label="Close notification">
+          ×
+        </button>
+        <h4>Test Passed! 🎉</h4>
+        <div class="notification-stats">
+          <p>Speed: <span id="finalSpeedValue">0 WPM</span></p>
+          <p>Accuracy: <span id="finalAccuracyValue">0%</span></p>
+          <p>Time: <span id="finalTimeValue">0s</span></p>
+        </div>
+      </div>
+
+      <div class="notification failure hidden" id="failureNotification">
+        <button class="notification-close" aria-label="Close notification">
+          ×
+        </button>
+        <h4>Test Failed! ❌</h4>
+        <p id="failureReason"></p>
+        <div class="requirements">
+          <p>Requirements:</p>
+          <ul>
+            <li>Speed: At least 30 WPM</li>
+            <li>Accuracy: At least 90%</li>
+            <li>Time: Under 45 seconds</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="notification warning hidden" id="warningNotification">
+        <button class="notification-close" aria-label="Close notification">
+          ×
+        </button>
+        <h4>Almost There! 🎯</h4>
+        <div class="notification-stats">
+          <p>Speed: <span id="warningSpeedValue">0 WPM</span></p>
+          <p>Accuracy: <span id="warningAccuracyValue">0%</span></p>
+          <p>Time: <span id="warningTimeValue">0s</span></p>
+        </div>
+        <p class="encouragement-message">
+          Great effort! You've met the speed and accuracy requirements. Try to
+          complete the test within 45 seconds for a perfect score!
+        </p>
+      </div>
+    </div>
+
+    <div class="info-popup hidden" id="infoPopup">
+      <div class="info-content">
+        <button class="close-info-btn" id="closeInfo">×</button>
+        <h3>🎯 Test Requirements</h3>
+        <div class="info-requirements">
+          <h4>Test Requirements:</h4>
+          <ul>
+            <li>⚡ Speed: At least 30 WPM</li>
+            <li>🎯 Accuracy: At least 90%</li>
+            <li>🕒 Time: Under 45 seconds</li>
+            <li>
+              🏆 Perfect score: 100% accuracy, 45 WPM and under 45 seconds
+            </li>
+            <li>🏁 Close pass: 90% accuracy, 30WPM and under 60 seconds</li>
+          </ul>
+          <div class="info-tips">
+           <li><img src="Stop.png" alt="" width="30px" height="30px" style="transform: translateY(10px);"/>- Stop the Test</li> 
+           <li><img src="refresh.png" alt="" width="30px" height="30px" style="transform: translateY(10px);"/>- Restart the Test</li> 
+           <li><img src="pause.png" alt="" width="30px" height="30px" style="transform: translateY(10px);"/>- Pause the Test</li> 
+           <li><img src="play.png" alt="" width="30px" height="30px" style="transform: translateY(10px);"/>- Resume the Test</li> 
+           <li><img src="nextparagraph.png" alt="" width="30px" height="30px" style="transform: translateY(10px);"/>- Change the Paragraph</li> 
+           <li><img src="light.png" alt="" width="30px" height="30px" style="transform: translateY(10px);"/>- Toggle Light theme</li>
+           <li><img src="dark.png" alt="" width="30px" height="30px" style="transform: translateY(10px);"/>- Toggle Dark theme</li>  
+              <hr />
+
+              <li>
+                Developed and designed by
+                <a href="https://github.com/XLegacy9/">@xlegacy9</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="Theme.js"></script>
+    <script src="Notification.js"></script>
+  </body>
+</html>
