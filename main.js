@@ -317,7 +317,7 @@ function resetTest() {
   isPaused = false;
   pausedTime = 0;
   pauseStartTime = 0;
-  pausePlayIcon.src = "pause.png";
+  pausePlayIcon.src = "images/pause.png";
   pausePlayBtn.disabled = true;
 
   // Reset graphical elements
@@ -374,7 +374,7 @@ function togglePausePlay() {
     // Pause the test
     clearInterval(timer);
     pauseStartTime = Date.now();
-    pausePlayIcon.src = "play.png";
+    pausePlayIcon.src = "images/play.png";
     textArea.disabled = true;
 
     // Show pause notification
@@ -383,7 +383,7 @@ function togglePausePlay() {
     // Resume the test
     pausedTime += Date.now() - pauseStartTime;
     startTimer();
-    pausePlayIcon.src = "pause.png";
+    pausePlayIcon.src = "images/pause.png";
     textArea.disabled = false;
     textArea.focus();
   }

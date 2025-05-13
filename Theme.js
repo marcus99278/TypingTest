@@ -39,7 +39,7 @@ let currentTheme = localStorage.getItem("theme") || "light";
 // Update theme icon based on current theme
 function updateThemeIcon() {
   const themeIcon = document.getElementById("themeIcon");
-  themeIcon.src = currentTheme === "light" ? "dark.png" : "light.png";
+  themeIcon.src = currentTheme === "light" ? "images/dark.png" : "images/light.png";
 }
 
 // Apply theme to elements
