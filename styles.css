@@ -2203,3 +2203,18 @@ body,
 .close-guide:hover {
   background: #c0392b;
 }
+
+.skip-guide {
+  border-radius: 25%;
+  border: none;
+  background: #4f6173;
+  color: white;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.skip-guide:hover {
+  background: #5a6b7d;
+}

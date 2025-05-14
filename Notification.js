@@ -50,6 +50,7 @@ class GuideNotification {
     notification.className = "guide-notification";
     notification.innerHTML = `
             <span class="notification-text"></span>
+            <button class="skip-guide">Skip</button>
             <button class="close-guide">×</button>
         `;
     document.body.appendChild(notification);
@@ -89,9 +90,19 @@ class GuideNotification {
       this.hideNotification(notification);
     });
 
+    const skipBtn = notification.querySelector(".skip-guide");
+    skipBtn.addEventListener("click", () => {
+      this.skipNotification(notification);
+    });
+
     this.activeTimeout = setTimeout(() => {
       this.hideNotification(notification);
     }, this.timeoutDuration);
+  }
+
+  skipNotification(notification) {
+    clearTimeout(this.activeTimeout);
+    notification.classList.remove("show");
   }
 
   hideNotification(notification) {
