@@ -57,7 +57,10 @@ function applyTheme(theme) {
   document
     .querySelectorAll("h1, h2, h3, h4, p, span, li")
     .forEach((element) => {
-      element.style.color = themeColors.textColor;
+      const exclude = element.classList.contains("notification-text") // Exclude text in guides
+      if (!(exclude)) {
+        element.style.color = themeColors.textColor;
+      }
     });
 
   // Text area
